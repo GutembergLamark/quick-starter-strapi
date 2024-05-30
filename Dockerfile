@@ -10,6 +10,4 @@ COPY . .
 
 RUN yarn build
 
-COPY .next ./.next
-
 CMD ["yarn", "start"]
