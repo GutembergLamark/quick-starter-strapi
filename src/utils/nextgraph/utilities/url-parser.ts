@@ -10,7 +10,7 @@ export function mergeUri(uriArray: string[], exceptions?: string[]) {
             element => !exceptions?.find(es => es == element)
         )
     }
-    return `${array_.join('/')}`
+    return `/${array_.join('/')}`
 }
 
 /**

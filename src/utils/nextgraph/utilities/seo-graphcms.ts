@@ -6,6 +6,8 @@ import { fetchQuery, seoConfig } from '..'
  * @param uri A string URI, use a função mergeUri(string[]) para transformar os paramêtros do Next em uma string URI.
  */
 export async function generateGraphCmsMetadata(uri: string): Promise<Metadata> {
+    const uri_ = uri.replace('/', '')
+
     const data = await fetchQuery(
         `
           query getPagesSEO($slug: String = "") {
@@ -14,8 +16,8 @@ export async function generateGraphCmsMetadata(uri: string): Promise<Metadata> {
             }
           }
         `,
-        { slug: uri },
-        { next: { tags: [uri, 'yoast'] } }
+        { slug: uri_ },
+        { next: { tags: [uri_, 'yoast'] } }
     )
 
     return wordpressToMetadata(data?.page?.seo)

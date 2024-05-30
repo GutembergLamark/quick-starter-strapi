@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
-
-import '@/assets/sass/main.scss'
 import { inter } from '@/assets/fonts'
+import '@/assets/sass/main.scss'
 
 // Crie seu favicon aqui: https://realfavicongenerator.net/
 // Depois cole os arquivos baixados dentro da pasta /public
@@ -34,7 +33,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className={`${inter.variable}`}>
+        <html lang="pt-br" className={`${inter.variable}`}>
             <body>{children}</body>
         </html>
     )

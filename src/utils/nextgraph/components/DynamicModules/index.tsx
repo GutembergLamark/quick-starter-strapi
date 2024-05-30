@@ -18,6 +18,8 @@ const DynamicModules = async ({
     staticCount?: number
     /* @ts-expect-error Async Server Component */
 }): React.ReactElement => {
+    const uri_ = uri.replace('/', '')
+
     const modulesType = fields.reduce((prev, cur) => {
         let checkQuery = `
         ... on ${cur?.field} {
@@ -43,7 +45,7 @@ const DynamicModules = async ({
             }
         }
         `,
-        { slug: uri }
+        { slug: uri_ }
     )
 
     return dynamic?.page?.modules ? (

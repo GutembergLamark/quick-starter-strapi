@@ -10,6 +10,8 @@ import { draftMode } from 'next/headers'
  * @returns Valor booleano.
  */
 export async function checkNode(uri: string, type: ModelsKeys) {
+    const uri_ = uri.replace('/', '')
+
     const { isEnabled } = draftMode()
     if (isEnabled) return true
 
@@ -30,8 +32,8 @@ export async function checkNode(uri: string, type: ModelsKeys) {
             ${typesQuery}
         }
         `,
-        { slug: uri },
-        { next: { tags: [uri] } }
+        { slug: uri_ },
+        { next: { tags: [uri_] } }
     )
     return (
         !!node?.[type.toLowerCase()] &&

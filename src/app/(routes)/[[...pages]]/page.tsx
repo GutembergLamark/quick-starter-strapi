@@ -1,15 +1,15 @@
 import { MotionMain } from '@/utils/libs/framer-motion'
+import { ApplicationLdJson } from '@/utils/nextgraph/components/ApplicationLdJson'
+import { DynamicModules } from '@/utils/nextgraph/components/DynamicModules'
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import {
-    ApplicationLdJson,
-    DynamicModules,
     checkNode,
     fetchQuery,
     filterUri,
     generateGraphCmsMetadata,
     mergeUri,
 } from '@/utils/nextgraph'
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 
 type PagesParams = { params: { pages: string[] } }
 

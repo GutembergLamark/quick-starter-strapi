@@ -18,11 +18,17 @@
         "server-only": "^0.0.1"
     },
     "devDependencies": {
+        "@next/bundle-analyzer": "^14.2.3",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
         "eslint": "^8",
         "eslint-config-next": "14.0.1",
-        "typescript": "^5"
-    }
+        "typescript": "^5",
+        "webpack-bundle-analyzer": "^4.10.2"
+    },
+    "sideEffects": [
+        "./src/sections/layout/index.ts",
+        "./src/sections/modules/index.ts"
+    ]
 }
