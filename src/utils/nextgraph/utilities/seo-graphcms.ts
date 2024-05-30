@@ -8,7 +8,7 @@ import { fetchQuery, seoConfig } from '..'
 export async function generateGraphCmsMetadata(uri: string): Promise<Metadata> {
     const uri_ = uri.replace('/', '')
 
-    const data = await fetchQuery(
+    const data = await fetchQuery<any>(
         `
           query getPagesSEO($slug: String = "") {
             page(where: {slug: $slug}) {

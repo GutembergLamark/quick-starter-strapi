@@ -6,7 +6,7 @@ import chalk from 'chalk'
 export async function GET(req: NextRequest) {
     const headersList = headers()
     const searchParams = req.nextUrl.searchParams
-    const authorization = headersList.get('authorization')
+    const authorization = headersList.get('Authorization')
     if (authorization != process.env?.NEXTKEY)
         return NextResponse.json({ revalidate: false }, { status: 401 })
 

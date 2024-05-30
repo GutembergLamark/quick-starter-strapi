@@ -35,7 +35,7 @@ const DynamicModules = async ({
             _id: string | 0
             post_type: string | false
         }
-    } = await fetchQuery(
+    } = await fetchQuery<any>(
         `
         query getModules($slug: String = "") {
             page(where: {slug: $slug}) {

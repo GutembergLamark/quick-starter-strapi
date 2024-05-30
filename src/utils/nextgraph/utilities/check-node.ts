@@ -26,7 +26,7 @@ export async function checkNode(uri: string, type: ModelsKeys) {
         return prev + checkQuery
     }, '')
 
-    const node = await fetchQuery(
+    const node = await fetchQuery<any>(
         `
         query getNotFound($slug: String = "") {
             ${typesQuery}

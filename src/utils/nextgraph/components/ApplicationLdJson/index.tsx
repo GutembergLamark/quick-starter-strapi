@@ -20,7 +20,7 @@ export async function ApplicationLdJson({
         `
         return prev + checkQuery
     }, '')
-    const res = await fetchQuery(
+    const res = await fetchQuery<any>(
         `
         query getRawSchema($slug: String = "") {
             ${typesQuery}
