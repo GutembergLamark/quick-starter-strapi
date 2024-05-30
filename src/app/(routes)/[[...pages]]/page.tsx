@@ -10,12 +10,13 @@ import {
     generateGraphCmsMetadata,
     mergeUri,
 } from '@/utils/nextgraph'
+import { GetAllPagesQuery } from '@/utils/nextgraph/graphql/graphql'
 
 type PagesParams = { params: { pages: string[] } }
 
 export async function generateStaticParams() {
-    const res = await fetchQuery(
-        `
+    const res = await fetchQuery<GetAllPagesQuery>(
+        /* GraphQL */ `
             query getAllPages {
                 pages {
                     slug
@@ -25,7 +26,7 @@ export async function generateStaticParams() {
         {},
         { cache: 'no-cache' }
     )
-    return (res?.pages ?? [{ slug: '/' }]).map((node: { slug: string }) => {
+    return (res?.pages ?? [{ slug: '/' }]).map(node => {
         return {
             pages: filterUri(node?.slug ?? '/'),
         }

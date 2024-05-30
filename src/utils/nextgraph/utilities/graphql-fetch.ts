@@ -7,11 +7,11 @@ import { RequestInit } from 'next/dist/server/web/spec-extension/request'
  * @param nextFetchConfig As configurações extras do Next.
  * @returns Sua query feita, ou um erro.
  */
-export async function fetchQuery(
+export async function fetchQuery<T>(
     query: string,
     variables: { [key: string]: string | number } = {},
     nextFetchConfig: RequestInit = {}
-): Promise<any> {
+): Promise<T> {
     return fetch(`${process.env.GRAPHCMS_PROJECT_API}`, {
         method: 'POST',
         headers: {

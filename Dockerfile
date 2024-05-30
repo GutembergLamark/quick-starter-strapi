@@ -8,6 +8,9 @@ RUN yarn
 
 COPY . .
 
-RUN yarn build
+ARG DEVELOPMENT_MODE
 
-CMD ["yarn", "start"]
+COPY init.sh .
+RUN chmod +x init.sh
+
+CMD ["sh", "./init.sh"]
