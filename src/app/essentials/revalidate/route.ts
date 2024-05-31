@@ -23,5 +23,24 @@ export async function GET(req: NextRequest) {
         )
     )
 
-    return NextResponse.json({ revalidated: true, now: Date.now() })
+    return new Response(
+        JSON.stringify({ revalidated: true, now: Date.now() }),
+        {
+            status: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods':
+                    'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            },
+        }
+    )
+
+    /* return NextResponse.json({
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        },
+    }) */
 }
