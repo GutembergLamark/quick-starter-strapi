@@ -1,27 +1,90 @@
-version: '3.7'
+version: "3.7"
 
 services:
-    app:
-        build:
-            context: .
-            dockerfile: Dockerfile
-            args:
-                DEVELOPMENT_MODE: ${DEVELOPMENT_MODE}
-        container_name: GraphCms
-        ports:
-            - '3000:3000'
-        volumes:
-            - .:/app
-            - /app/node_modules
-            - /app/.next
-        environment:
-            - DEVELOPMENT_MODE=${DEVELOPMENT_MODE}
+  app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        DEVELOPMENT_MODE: ${DEVELOPMENT_MODE}
+    container_name: next
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - STRAPI_GRAPHQL=http://strapi:1337
+      - DEVELOPMENT_MODE=${DEVELOPMENT_MODE}
+    networks:
+      - strapi
 
-    nginx:
-        image: nginx:latest
-        ports:
-            - '80:80'
-        volumes:
-            - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-        depends_on:
-            - app
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - strapi
+
+  strapi:
+    container_name: strapi
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: development
+    image: strapi:latest
+    restart: unless-stopped
+    env_file: ./backend/.env
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: postgres
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./backend:/opt/app
+      - ./backend/package.json:/opt/package.json
+      - ./backend/yarn.lock:/opt/yarn.lock
+      - ./backend/.env:/opt/app/.env
+      - ./backend/public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - strapi
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:12.0-alpine
+    restart: unless-stopped
+    env_file: ./backend/.env
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - strapi-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - strapi
+
+volumes:
+  strapi-data:
+
+networks:
+  strapi:
+    name: strapi
+    driver: bridge

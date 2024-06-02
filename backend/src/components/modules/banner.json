@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_modules_banners",
+  "info": {
+    "displayName": "Banner"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
