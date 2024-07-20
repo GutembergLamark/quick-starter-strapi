@@ -17,26 +17,10 @@ const getField = (module: string) => `ComponentModules${module}`
 
 export const fields = [
     {
-        field: getField(fieldsTypes?.Banner),
+        field: getField(fieldsTypes?.ExampleModule),
         query: `
         ${defaultFields}
-          title
-          slides{
-            title
-            subtitle
-            description
-            button_title
-            button_url
-            image{
-              data{
-                attributes{
-                  url
-                  width
-                  height
-                }
-              }
-            }
-          }
+          
           `,
     },
 ]
