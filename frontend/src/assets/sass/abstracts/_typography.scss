@@ -1,0 +1,39 @@
+@mixin typography(
+    $family: var(--font-inter),
+    $size: clamp(1.4rem, 1.6cqi, 1.6rem),
+    $align: center,
+    $weight: 400,
+    $height: clamp(2rem, 2.4cqi, 2.4rem)
+) {
+    font-family: $family;
+    font-size: $size;
+    text-align: $align;
+    font-weight: $weight;
+    line-height: $height;
+}
+
+@mixin _6-4rem(
+    $family: var(--font-inter),
+    $align: left,
+    $weight: 600,
+    $height: clamp(6rem, 7.6cqi, 7.6rem)
+) {
+    font-family: $family;
+    font-size: clamp(5rem, 6.4cqi, 6.4rem);
+    font-weight: $weight;
+    text-align: $align;
+    line-height: $height;
+}
+
+@mixin _1-6rem(
+    $family: var(--font-inter),
+    $weight: 500,
+    $align: center,
+    $height: clamp(2rem, 2.4cqi, 2.4rem)
+) {
+    font-family: $family;
+    font-size: clamp(1.4rem, 1.6cqi, 1.6rem);
+    font-weight: $weight;
+    text-align: $align;
+    line-height: $height;
+}

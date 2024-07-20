@@ -21,6 +21,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: process.env.IMAGEPROTOCOL,
+        hostname: 'strapi',
+        port: '1337',
+        pathname: '/**',
+      },
     ],
   },
 }

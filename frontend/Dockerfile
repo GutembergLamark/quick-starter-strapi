@@ -10,7 +10,12 @@ COPY . .
 
 ARG DEVELOPMENT_MODE
 
-COPY init.sh .
-RUN chmod +x init.sh
+ENV DOCKERIZE_VERSION v0.7.0
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+&& tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+&& rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-CMD ["sh", "./init.sh"]
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+CMD ["sh", "./entrypoint.sh"]

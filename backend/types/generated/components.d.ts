@@ -1,5 +1,21 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ListsSlideBanner extends Schema.Component {
+  collectionName: 'components_lists_slide_banners';
+  info: {
+    displayName: 'SlideBanner';
+    description: '';
+  };
+  attributes: {
+    description: Attribute.Text;
+    button_title: Attribute.String;
+    button_url: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Attribute.String;
+    subtitle: Attribute.String;
+  };
+}
+
 export interface MenuLink extends Schema.Component {
   collectionName: 'components_menu_links';
   info: {
@@ -15,9 +31,11 @@ export interface ModulesBanner extends Schema.Component {
   collectionName: 'components_modules_banners';
   info: {
     displayName: 'Banner';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
+    slides: Attribute.Component<'lists.slide-banner', true>;
   };
 }
 
@@ -75,6 +93,7 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'lists.slide-banner': ListsSlideBanner;
       'menu.link': MenuLink;
       'modules.banner': ModulesBanner;
       'shared.meta-social': SharedMetaSocial;

@@ -54,7 +54,6 @@ export default async function Page({ params }: PagesParams) {
 
     return (
         <MotionMain key={uri} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            oiii
             <DynamicModules field="main" uri={uri} />
             <ApplicationLdJson uri={uri} type={'Pages'} />
         </MotionMain>

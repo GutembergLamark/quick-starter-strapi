@@ -12,10 +12,7 @@ export async function fetchQuery<T>(
     variables: { [key: string]: string | number } = {},
     nextFetchConfig: RequestInit = {}
 ): Promise<T> {
-    const operationName = query.split(' ')[1]
-    console.log(operationName)
-
-    return fetch(`${process.env.STRAPI_GRAPHQL}/graphql`, {
+    return fetch(`${process.env.STRAPI}/graphql`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -1,0 +1,14 @@
+@import '@/assets/sass/abstracts/typography';
+@import '@/assets/sass/abstracts/variables';
+
+.button {
+    display: inline-block;
+
+    &--default {
+        @include _1-6rem;
+        color: $white-color;
+        background-color: $primary-color;
+        padding: clamp(1.2rem, 1.4cqi, 1.4rem) clamp(2.8rem, 3.2cqi, 3.2rem);
+        border-radius: 0.4rem;
+    }
+}

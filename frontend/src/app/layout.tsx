@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { inter } from '@/assets/fonts'
 import '@/assets/sass/main.scss'
+import '@splidejs/react-splide/css/core'
 
 // Crie seu favicon aqui: https://realfavicongenerator.net/
 // Depois cole os arquivos baixados dentro da pasta /public

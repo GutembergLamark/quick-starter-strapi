@@ -7,7 +7,7 @@ const templateFunctions = {
         let moduleMainFolder = findFolder('./src', 'modules')
         let moduleFolder = `./${moduleMainFolder}/${moduleName}`
         let moduleTemplate = fs.readFileSync(
-            './templates/nextpress.utils.module.tsx',
+            './templates/nextrapi.utils.module.tsx',
             'utf-8'
         )
         moduleTemplate = moduleTemplate.replace('// @ts-nocheck', '')
@@ -47,7 +47,7 @@ const templateFunctions = {
         let layoutMainFolder = findFolder('./src', 'layouts')
         let layoutFolder = `./${layoutMainFolder}/${layoutName}`
         let layoutTemplate = fs.readFileSync(
-            './templates/nextpress.utils.layout.tsx',
+            './templates/nextrapi.utils.layout.tsx',
             'utf-8'
         )
         layoutTemplate = layoutTemplate.replace('// @ts-nocheck', '')
@@ -108,7 +108,7 @@ const templateFunctions = {
         let moduleFolder = `./${moduleMainFolder}/${moduleName}/`
 
         let moduleTemplate = fs.readFileSync(
-            './templates/nextpress.utils.internal.tsx',
+            './templates/nextrapi.utils.internal.tsx',
             'utf-8'
         )
         moduleTemplate = moduleTemplate.replace('// @ts-nocheck', '')
@@ -192,7 +192,7 @@ function createComponent(type) {
     let componentMainFolder = findFolder('./src', type, 'component')
     let componentFolder = `./${componentMainFolder}/${componentName}`
     let componentTemplate = fs.readFileSync(
-        './templates/nextpress.utils.component.tsx',
+        './templates/nextrapi.utils.component.tsx',
         'utf-8'
     )
     componentTemplate = componentTemplate.replace('// @ts-nocheck', '')

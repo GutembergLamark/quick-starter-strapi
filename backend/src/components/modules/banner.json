@@ -1,12 +1,19 @@
 {
   "collectionName": "components_modules_banners",
   "info": {
-    "displayName": "Banner"
+    "displayName": "Banner",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "slides": {
+      "displayName": "SlideBanner",
+      "type": "component",
+      "repeatable": true,
+      "component": "lists.slide-banner"
     }
   }
 }

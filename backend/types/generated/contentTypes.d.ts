@@ -825,7 +825,7 @@ export interface ApiPagePage extends Schema.CollectionType {
   info: {
     singularName: 'page';
     pluralName: 'pages';
-    displayName: 'Page';
+    displayName: 'Paginas';
     description: '';
   };
   options: {
@@ -852,6 +852,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     singularName: 'post';
     pluralName: 'posts';
     displayName: 'Not\u00EDcias';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -859,6 +860,7 @@ export interface ApiPostPost extends Schema.CollectionType {
   attributes: {
     seo: Attribute.Component<'shared.seo'>;
     title: Attribute.String;
+    slug: Attribute.UID<'api::post.post', 'title'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

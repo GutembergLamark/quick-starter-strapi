@@ -1,18 +1,20 @@
+import { Fields } from './Banner.interfaces'
 import './Banner.scss'
-
-// Se o módulo for ter alguma informação estática pegar aqui.
-// async function getData(uri: string, locale: string) {
-//     return {}
-// }
+import Slide from './Banner.slide'
 
 const Banner = async ({
     fields,
     uri,
     order,
 }: /* @ts-expect-error Async Server Component */
-ModuleProps): React.ReactElement => {
-    // const data = await getData(uri, locale)
-    return <section>{fields?.title}</section>
+ModuleProps<Fields>): React.ReactElement => {
+    return (
+        <section className="banner">
+            <div className="banner__wrapper wrapper">
+                <Slide slides={fields?.slides} />
+            </div>
+        </section>
+    )
 }
 
 export { Banner }

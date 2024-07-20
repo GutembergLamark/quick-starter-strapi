@@ -36,8 +36,6 @@ export async function ApplicationLdJson({
         { next: { tags: [uri_] } }
     )
 
-    console.log(res)
-
     const data = res?.[type.toLowerCase()]?.data
 
     if (!data.length) return <></>
