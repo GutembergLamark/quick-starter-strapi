@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = () => ({
   graphql: {
     enable: true,
     config: {
@@ -16,4 +16,4 @@ module.exports = {
   seo: {
     enabled: true,
   },
-};
+});
